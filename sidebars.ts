@@ -22,7 +22,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "unity-client/intro",
       },
-      items: [],
+      items: ["unity-client/installation"],
     },
   ],
   dojoServerSidebar: [
@@ -33,7 +33,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "dojo-server/intro",
       },
-      items: [],
+      items: ["dojo-server/installation"],
     },
   ],
 
