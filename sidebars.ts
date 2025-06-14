@@ -17,32 +17,17 @@ const sidebars: SidebarsConfig = {
   unityClientSidebar: [
     {
       type: "category",
-      label: "1. Вступ",
+      label: "Вступ",
       items: [
         "unity-client/introduction/overview",
         "unity-client/introduction/dependencies",
         "unity-client/introduction/initialization",
+        "unity-client/introduction/main-components",
       ],
     },
     {
       type: "category",
-      label: "2. Запуск і підключення",
-      items: [
-        "unity-client/connection/server-startup",
-        "unity-client/connection/client-configuration",
-      ],
-    },
-    {
-      type: "category",
-      label: "3. Структура клієнту",
-      items: [
-        "unity-client/structure/main-components",
-        "unity-client/structure/entry-point",
-      ],
-    },
-    {
-      type: "category",
-      label: "4. Обмін данних",
+      label: "Обмін данних",
       items: [
         "unity-client/data-exchange/data-synchronization",
         "unity-client/data-exchange/data-filtering",
@@ -56,12 +41,12 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "5. Меню",
+      label: "Меню",
       items: ["unity-client/menu/menu-overview"],
     },
     {
       type: "category",
-      label: "6. Сесія",
+      label: "Сесія",
       items: [
         "unity-client/session/session-manager",
         "unity-client/session/board-manager",
@@ -70,7 +55,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "7. Розгортання",
+      label: "Розгортання",
       items: [
         "unity-client/deployment/build-creation",
         "unity-client/deployment/build-launch",
@@ -79,7 +64,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "8. FAQ",
+      label: "FAQ",
       items: ["unity-client/faq/faq"],
     },
   ],
