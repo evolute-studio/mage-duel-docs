@@ -19,5 +19,3 @@ sidebar_position: 2
 - Репозиторій серверу:https://github.com/evolute-studio/territory-wars-dojo
 - Репозиторій веб додатку: https://github.com/evolute-studio/mage-duel-webgl
 - Dojo Engine документація: https://dojoengine.org/
-
-## Client
