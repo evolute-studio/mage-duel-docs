@@ -20,7 +20,6 @@ const sidebars: SidebarsConfig = {
       label: "Вступ",
       items: [
         "unity-client/introduction/overview",
-        "unity-client/introduction/dependencies",
         "unity-client/introduction/initialization",
         "unity-client/introduction/main-components",
       ],
@@ -33,10 +32,8 @@ const sidebars: SidebarsConfig = {
         "unity-client/data-exchange/data-filtering",
         "unity-client/data-exchange/server-functions-burner",
         "unity-client/data-exchange/server-functions-controller",
-        "unity-client/data-exchange/server-models",
-        "unity-client/data-exchange/client-models",
-        "unity-client/data-exchange/server-events",
-        "unity-client/data-exchange/client-events",
+        "unity-client/data-exchange/models",
+        "unity-client/data-exchange/events",
       ],
     },
     {
