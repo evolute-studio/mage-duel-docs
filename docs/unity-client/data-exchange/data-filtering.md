@@ -2,18 +2,17 @@
 sidebar_position: 2
 ---
 
-# Фільтрація данних
+# Data Filtering
 
-## Механізми фільтрації
+## Filtering Mechanisms
 
-Головний скрипт, який займається фільтрацією моделей це `Assets/TerritoryWars/General/IncomingModelsFilter.cs`. Його принцип простий, коли на клієнт приходить модель, перевіряється чи ствосується вона до гравця або сесії в якій він зараз. Якщо ні - видаляється. 
+The main script that handles model filtering is `Assets/TerritoryWars/General/IncomingModelsFilter.cs`. Its principle is simple: when a model arrives at the client, it checks whether it relates to the player or the session they are currently in. If not - it is deleted. 
 
 :::note
-По дефолту всі нові моделі пропускаються
+By default, all new models are allowed through
 :::
 
-
-В клієнта є декілька станів і на кожний стан свій фільтр:
+The client has several states, and each state has its own filter:
 ```csharp
 public enum ApplicationStates
 {

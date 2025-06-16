@@ -2,14 +2,14 @@
 sidebar_position: 5
 ---
 
-# Виклик функцій на сервері (для burner accounts)
+# Calling Server Functions (for burner accounts)
 
-## Особливості
+## Features
 
-1. Обмеження
-2. Безпека
-3. Оптимізація
+1. Limitations
+2. Security
+3. Optimization
 
-## Приклади використання
+## Usage Examples
 
-Приклади виклику серверних функцій з burner accounts.
+Examples of calling server functions from burner accounts.

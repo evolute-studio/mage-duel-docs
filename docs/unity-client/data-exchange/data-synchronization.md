@@ -2,40 +2,40 @@
 sidebar_position: 1
 ---
 
-# Синхронізація данних
+# Data Synchronization
 
-## Загальна інформація
+## General Information
 
-Інформація на сервері зберігаєтья в [моделях](models.md). Щоб їх використати на клієнті, треба згенерувати c# скрипти при білді серверу, це робиться ось так:
+Information on the server is stored in [models](models.md). To use them on the client, you need to generate C# scripts during server build, which is done like this:
 
 ```bash
 sozo build --unity
 ```
 
-Далі отримані згенеровані моделі і контракти будеть знаходитись в папці dojo проекту: `territory-wars-dojo/bindings/unity`.
-Отримані скрипти треба перенести на клієнт за шляхом:
+The generated models and contracts will be located in the dojo project folder: `territory-wars-dojo/bindings/unity`.
+The received scripts need to be moved to the client at the following paths:
 
 - `Assets/TerritoryWars/Models`
 - `Assets/TerritoryWars/Contracts`.
 
 :::note
-Кастомні івенти не генеруються! Ці скрипти найпростіше зробити по прикладу.
+Custom events are not generated! These scripts are easiest to create by example.
 :::
 
-Основна синхронізація відбувається завдяки двом скриптам з **Dojo unity SDK**:
+The main synchronization happens through two scripts from the **Dojo Unity SDK**:
 
-- `WorldManager` - зберігає моделі на клієнті і має логіку їх локально отримання
-- `SynchronizationManager` - синхронізує моделі, івенти, має логіку отримання моделей по query
+- `WorldManager` - stores models on the client and has logic for their local retrieval
+- `SynchronizationManager` - synchronizes models, events, has logic for retrieving models by query
 
-## Отримання моделі
+## Getting a Model
 
-Для отримання потрібної моделі, треба використати статичний скрипт `DojoLayer`, де є набір методів для отримання **dojo моделі** і конвертація у **клієнську модель**.
+To get the required model, you need to use the static script `DojoLayer`, which has a set of methods for retrieving **dojo models** and converting them to **client models**.
 
-Про моделі детальніше можна дізнатись [тут](models.md).
+You can learn more about models [here](models.md).
 
-Використовуйте готові методи, або додавайте додаткові на прикладі готових.
+Use the ready-made methods or add additional ones based on the existing examples.
 
-Наприклад як отриматии клієнську модель гравця:
+For example, how to get a client player model:
 
 ```csharp
 public async Task<PlayerProfile> GetPlayerProfile(string playerId)
@@ -55,18 +55,18 @@ public async Task<PlayerProfile> GetPlayerProfile(string playerId)
 }
 ```
 
-Спочатку буде перевірено чи уже є потрібна модель на клієнті через **WorldManager**, якщо ні - виконується синхронізації.
+First, it will check if the required model is already on the client through **WorldManager**, if not - synchronization is performed.
 
-Більш детальніше як отримати модель, яка відсутня в проекті:
+More details on how to get a model that is not in the project:
 
-- Спочатку треба зробити відповідний **Query** в класі **DojoQueries**.
-- Далі в скрипті **CustomSynchronizationManager** треба додати метод по прикладу.
-- Бажано зробити відповідну **клієнтську модель,** так як деякі типи полів, або представлення данних з серверу незручно використовувати на клієнті напряму. Клієнтські моделі знаходяться в папці: `Assets/TerritoryWars/DataModels`
-- Треба зробити відповідний метод конвертації в **DojoLayer**.
-- Викликати метод `await DojoLayer.NewMethod()`.
+- First, you need to create the corresponding **Query** in the **DojoQueries** class.
+- Then in the **CustomSynchronizationManager** script, add a method following the example.
+- It's advisable to create a corresponding **client model**, as some field types or data representations from the server are not convenient to use directly on the client. Client models are located in the folder: `Assets/TerritoryWars/DataModels`
+- You need to create a corresponding conversion method in **DojoLayer**.
+- Call the method `await DojoLayer.NewMethod()`.
 
-Готово!
+Done!
 
 :::warning
-Якщо ви не бачете своєї моделі, можливо вона відфільтрована [IncomingModelsFilter](data-filtering.md)
+If you don't see your model, it might be filtered by [IncomingModelsFilter](data-filtering.md)
 :::
