@@ -232,6 +232,9 @@ mage-duel-onchain/
 │   │   │   └── validation.cairo # Validation of tile placement
 │   │   ├── game.cairo   # Game management
 │   │   └── player_profile_actions.cairo # Player profile actions
+│   ├── types/         # Game types
+│   ├── utils/         # Game utils
+│   ├── events.cairo        # Game events
 │   └── lib.cairo        # Main module exports
 ├── Scarb.toml           # Project configuration & scripts
 └── README.md            # Basic project information

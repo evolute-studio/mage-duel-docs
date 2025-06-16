@@ -66,6 +66,23 @@ const sidebars: SidebarsConfig = {
       label: "Introduction",
       items: ["dojo-server/introduction/quick-start"],
     },
+    {
+      type: "category",
+      label: "API Reference",
+      items: [
+        "dojo-server/api-reference/overview", 
+        {
+          type: 'category',
+          label: 'Models',
+          items: [
+            "dojo-server/api-reference/models/game", 
+            "dojo-server/api-reference/models/player", 
+            "dojo-server/api-reference/models/union-find",
+            "dojo-server/api-reference/models/shop"
+          ],
+        },
+      ],
+    },
   ],
 
   // But you can create a sidebar manually
