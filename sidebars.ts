@@ -69,12 +69,8 @@ const sidebars: SidebarsConfig = {
   dojoServerSidebar: [
     {
       type: "category",
-      label: "Dojo Server",
-      link: {
-        type: "doc",
-        id: "dojo-server/intro",
-      },
-      items: ["dojo-server/installation"],
+      label: "Introduction",
+      items: ["dojo-server/intro"],
     },
   ],
 
