@@ -30,10 +30,11 @@ const sidebars: SidebarsConfig = {
       items: [
         "unity-client/data-exchange/data-synchronization",
         "unity-client/data-exchange/data-filtering",
-        "unity-client/data-exchange/server-functions-burner",
-        "unity-client/data-exchange/server-functions-controller",
         "unity-client/data-exchange/models",
         "unity-client/data-exchange/events",
+        "unity-client/data-exchange/server-functions-burner",
+        "unity-client/data-exchange/server-functions-controller",
+        
       ],
     },
     {
