@@ -70,7 +70,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Introduction",
-      items: ["dojo-server/intro"],
+      items: ["dojo-server/introduction/quick-start"],
     },
   ],
 
