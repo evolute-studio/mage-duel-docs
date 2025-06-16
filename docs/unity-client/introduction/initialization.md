@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Ініціалізація
 
-## Development Setup
+## Prerequisites
 
 - Unity Editor: Unity 6 6000.1.3f1
 - Dojo Unity SDK: v1.5.0d
