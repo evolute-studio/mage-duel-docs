@@ -21,8 +21,15 @@ const sidebars: SidebarsConfig = {
       items: [
         "unity-client/introduction/overview",
         "unity-client/introduction/initialization",
-        "unity-client/introduction/main-components",
       ],
+    },
+    {
+      type: "category",
+      label: "Структура проекту",
+      items: [
+        "unity-client/project-structure/main-components",
+        "unity-client/project-structure/menu", 
+        "unity-client/project-structure/session"],
     },
     {
       type: "category",
@@ -35,20 +42,6 @@ const sidebars: SidebarsConfig = {
         "unity-client/data-exchange/server-functions-burner",
         "unity-client/data-exchange/server-functions-controller",
         
-      ],
-    },
-    {
-      type: "category",
-      label: "Меню",
-      items: ["unity-client/menu/menu-overview"],
-    },
-    {
-      type: "category",
-      label: "Сесія",
-      items: [
-        "unity-client/session/session-manager",
-        "unity-client/session/board-manager",
-        "unity-client/session/game-ui",
       ],
     },
     {
