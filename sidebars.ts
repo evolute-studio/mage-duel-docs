@@ -28,15 +28,9 @@ const sidebars: SidebarsConfig = {
       label: "Структура проекту",
       items: [
         "unity-client/project-structure/main-components",
+        "unity-client/core-mechanics/tile-placing",
         "unity-client/project-structure/menu", 
         "unity-client/project-structure/session"],
-    },
-    {
-      type: "category",
-      label: "Core mechanics",
-      items: [
-        "unity-client/core-mechanics/tile-placing",
-      ],
     },
     {
       type: "category",
