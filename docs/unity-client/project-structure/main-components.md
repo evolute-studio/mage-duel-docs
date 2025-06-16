@@ -2,28 +2,28 @@
 sidebar_position: 3
 ---
 
-# Загальна інформація
+# General Information
 
-## Структура проекту
+## Project Structure
 
-- `Assets/Prefabs` - префаби
-- `Assets/Plugins/WebGL/Wrapper.jslib` - головний jslib файл, що є мостом між Unity Client і Next.js wrapper web app
-- `Assets/Resources` - деякі конфігураційні scriptable objects, для персонажів, спрайтів для тайлів.
-- `Assets/Scenes` - сцени, головні з них це StartScene, Menu, Session.
-- `Assets/Sprites` - спрайти
-- `Assets/TerritoryWars` - основна кодова база тут
+- `Assets/Prefabs` - prefabs
+- `Assets/Plugins/WebGL/Wrapper.jslib` - main jslib file that serves as a bridge between Unity Client and Next.js wrapper web app
+- `Assets/Resources` - some configuration scriptable objects for characters, tile sprites
+- `Assets/Scenes` - scenes, the main ones are StartScene, Menu, Session
+- `Assets/Sprites` - sprites
+- `Assets/TerritoryWars` - main codebase is here
 
-## Головні скрипти
+## Main Scripts
 
-- `EntryPoint` - керує первинним завантаженням клієнта, виклик створення акаунтів, синхронізації данних, перевірки стану і тд.
-- `DojoGameManager` - Містить логіку створення акаунтів гравця і бота, логіку синхронізації і тд
-- `GlobalContext` - Містить загальні структури, доступний як поле сінгелтону DojoGameManager. Містить SessionContext.
-- `SessionContext` - Містить інформацію про сесію, всі структури даних дошки, гравців і тд. Доступний як через GlobalContext, так і через SessionManager
-- `SessionManager` - головний скрипт, що керує сесію, має компоненту будому. Детульніше [тут](../session/session-manager.md).
-- `BoardManager` - відповідає за постановку тайлів, їх збереженням і тд.
-- `TileData` - головний клас збереення інформації про тайл.
-- `TileSelector` - скрипт який керує процесом встановлення тайлов локального гравця. Підбір мжливих позицій, їх показ, виклик ставлення тайла.
-- `DojoLayer` - новий скрипт через який легко можна отримувати dojo моделі і відразу конвертувати в клієнтську модель.
-- `EventHandler` - займається відслідковуванням dojo івентів і обновленням dojo моделей. Фільтрує і конвертує в клієнтські івенти
-- `GameUI` - головний скрипт UI в сесії
-- `GameConfiguration` - конфігурація гри
+- `EntryPoint` - manages initial client loading, account creation calls, data synchronization, state verification, etc.
+- `DojoGameManager` - Contains logic for creating player and bot accounts, synchronization logic, etc.
+- `GlobalContext` - Contains common structures, accessible as a singleton field of DojoGameManager. Contains SessionContext.
+- `SessionContext` - Contains session information, all board data structures, players, etc. Accessible both through GlobalContext and SessionManager
+- `SessionManager` - main script that manages the session, has a builder component. More details [here](../session/session-manager.md).
+- `BoardManager` - responsible for tile placement, their storage, etc.
+- `TileData` - main class for storing tile information.
+- `TileSelector` - script that manages the process of placing local player tiles. Selection of possible positions, their display, tile placement call.
+- `DojoLayer` - new script through which you can easily get dojo models and immediately convert them to client models.
+- `EventHandler` - handles tracking dojo events and updating dojo models. Filters and converts to client events
+- `GameUI` - main UI script in session
+- `GameConfiguration` - game configuration

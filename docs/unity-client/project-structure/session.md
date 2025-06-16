@@ -4,13 +4,13 @@ sidebar_position: 3
 
 # Session
 
-Головний скрипт сесії це **SessionManager** який має композиційну будову і організовує модулі, що керують сесією.
-Основні модулі:
-- **GameLoopManager** - повністю відповідає за зміну ходів і їх опрацювання
-- **PlayersManager** - відповідає за спавн, налаштування і появу гравців
-- **JokerManager** - відповідає за використання джокерів
-- **ContestManager** - відповідає за контести структур на дошці
+The main session script is **SessionManager** which has a compositional structure and organizes modules that manage the session.
+Main modules:
+- **GameLoopManager** - fully responsible for turn changes and their processing
+- **PlayersManager** - responsible for spawning, configuring, and appearance of players
+- **JokerManager** - responsible for using jokers
+- **ContestManager** - responsible for structure contests on the board
 
-Також він містить в собі два важливі класа:
-- **SessionManagerContext** - містить в собі основні і додаткові модулі **SessionManager**. Зручно звертатись через це з одного модуля в інший.
-- **SessionContext** - містить в собі всі структури і поля, які потрібні для сесії. 
+It also contains two important classes:
+- **SessionManagerContext** - contains the main and additional modules of **SessionManager**. It's convenient to access from one module to another through this.
+- **SessionContext** - contains all structures and fields needed for the session. 

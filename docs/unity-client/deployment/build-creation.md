@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# Створення білда
+# Creating a Build
 
-## Налаштування і білд
+## Settings and Build
 
-Відкрийте `Edit -> Project settings -> Player -> Web -> Resolution and Presentation` і перевірте чи вибраний **Dojo** темплейт. Також зверніть увагу на версію.
+Open `Edit -> Project settings -> Player -> Web -> Resolution and Presentation` and check if the **Dojo** template is selected. Also pay attention to the version.
 
 ![unity_project_setting](./img/unity_build_conf.png)
 
-Відкрийте `File -> Build Profiles` і треба вибрати платформу **Web** (якщо її немає, встановіть через unity hub). Натисніть на кнопку **Build**.
-Треба точно вказати назву білда `mageduel-webgl-x.y.z`, де x, y, z - версія.
+Open `File -> Build Profiles` and select the **Web** platform (if it's not there, install it through unity hub). Click the **Build** button.
+You need to specify the exact build name `mageduel-webgl-x.y.z`, where x, y, z is the version.

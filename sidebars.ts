@@ -17,7 +17,7 @@ const sidebars: SidebarsConfig = {
   unityClientSidebar: [
     {
       type: "category",
-      label: "Вступ",
+      label: "Introduction",
       items: [
         "unity-client/introduction/overview",
         "unity-client/introduction/initialization",
@@ -25,22 +25,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Структура проекту",
+      label: "Project Structure",
       items: [
         "unity-client/project-structure/main-components",
+        "unity-client/core-mechanics/tile-placing",
         "unity-client/project-structure/menu", 
         "unity-client/project-structure/session"],
     },
     {
       type: "category",
-      label: "Core mechanics",
-      items: [
-        "unity-client/core-mechanics/tile-placing",
-      ],
-    },
-    {
-      type: "category",
-      label: "Обмін данних",
+      label: "Data Transfer",
       items: [
         "unity-client/data-exchange/data-synchronization",
         "unity-client/data-exchange/data-filtering",
@@ -53,7 +47,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Розгортання",
+      label: "Deployment",
       items: [
         "unity-client/deployment/build-creation",
         "unity-client/deployment/build-launch",

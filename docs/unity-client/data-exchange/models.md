@@ -2,13 +2,12 @@
 sidebar_position: 3
 ---
 
-# Моделі
+# Models
 
+## Server Model
 
-## Серверна модель
-
-Це модель згенерована через `sozo build --unity` і знаходиться за шляхом `Assets/TerritoryWars/Models`.
-Ось як наприклад виглядає модель Board:
+This is a model generated through `sozo build --unity` and is located at `Assets/TerritoryWars/Models`.
+Here's how the Board model looks, for example:
 ```csharp title="Assets/TerritoryWars/Models/evolute_duel-Board.gen.cs"
 public class evolute_duel_Board : ModelInstance {
     [ModelField("id")]
@@ -40,11 +39,11 @@ public class evolute_duel_Board : ModelInstance {
 }
 ```
 
-Такі типи як **FieldElement**, **Option&lt;A&gt;**, **(object, object, object)[]** і тд не зручно на пряму використовувати на клієнті, тому на коли на клієнті потрібна модель конвертується в **DojoLayer**.
+Types like **FieldElement**, **Option&lt;A&gt;**, **(object, object, object)[]** etc. are not convenient to use directly on the client, so when a model is needed on the client, it is converted in **DojoLayer**.
 
-## Клієнтська модель
-Клієнтська модель пишеться вручну і знаходиться за шляхом `Assets/TerritoryWars/DataModels`.
-Ось як виглядає та сама модель Board:
+## Client Model
+The client model is written manually and is located at `Assets/TerritoryWars/DataModels`.
+Here's how the same Board model looks:
 ```csharp title="Assets/TerritoryWars/DataModels/Board.cs"
 public struct Board
 {
@@ -65,4 +64,4 @@ public struct Board
 }
 ```
 
-Наприклад тут замінено стан дошки з `(byte, byte, byte)[] state` на `Dictionary<Vector2Int, TileModel> Tiles`. Позиція тепер це не індекс масива, а **Vector2Int** і всі значення тапллів перенесені в структуру **TileModel**.
+For example, here the board state has been changed from `(byte, byte, byte)[] state` to `Dictionary<Vector2Int, TileModel> Tiles`. The position is now a **Vector2Int** instead of an array index, and all tile values have been moved to the **TileModel** structure.

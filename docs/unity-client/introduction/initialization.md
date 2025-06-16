@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Ініціалізація
+# Initialization
 
 ## Prerequisites
 
@@ -13,31 +13,31 @@ sidebar_position: 2
 - Katana: v1.5.3
 - Torii: v1.5.5
 
-## Посилання
+## Links
 
-- Репозиторій unity клієнта: https://github.com/evolute-studio/territory-wars-unity-client
-- Репозиторій серверу:https://github.com/evolute-studio/territory-wars-dojo
-- Репозиторій веб додатку: https://github.com/evolute-studio/mage-duel-webgl
-- Dojo Engine документація: https://dojoengine.org/
+- Unity client repository: https://github.com/evolute-studio/territory-wars-unity-client
+- Server repository: https://github.com/evolute-studio/territory-wars-dojo
+- Web application repository: https://github.com/evolute-studio/mage-duel-webgl
+- Dojo Engine documentation: https://dojoengine.org/
 
-## Запуск локального серверу
+## Starting Local Server
 
-Для початку встановіть Dojo, це можна зробити за цією [інструкцією](https://dojoengine.org/installation#installing-dojo-with-dojoup)
+First, install Dojo by following these [instructions](https://dojoengine.org/installation#installing-dojo-with-dojoup)
 
-Склонуйте репозиторій серверу і перейдіть в нього:
+Clone the server repository and navigate to it:
 
 ```bash
 git clone https://github.com/evolute-studio/territory-wars-dojo
 cd territory-wars-dojo
 ```
 
-Запустіть katana:
+Start katana:
 
 ```bash
 katana --dev --dev.no-fee --http.cors_origins '*'
 ```
 
-Далі треба зробити білд, зробити міграцю котрактів і моделей на локальну kanata і перевірити адреса світу і контрактів:
+Next, you need to build, migrate contracts and models to local katana, and verify the world and contract addresses:
 
 ```bash
 sozo build --unity
@@ -45,33 +45,34 @@ sozo migrate
 sozo inspect
 ```
 
-Після команди `sozo inspect` ви отримаєте такий вивід. Якщо в колонці **Status** стоїть значення **Synced** або **Updated** - вітаю, все пройшло коректно. Якщо ж **Created** - контрактів і моделей немає на Katana.
+After running `sozo inspect`, you will get output like this. If the **Status** column shows **Synced** or **Updated** - congratulations, everything went correctly. If it shows **Created** - contracts and models are not on Katana.
 
 ![sozo_inspect_result](./img/1_sozo_inspect.png)
 
-Виділений адрес світу треба вставити у конфігураційний файл torii `torii_config_dev.toml`.
-Після цього можете запускати torii:
+The highlighted world address needs to be inserted into the torii configuration file `torii_config_dev.toml`.
+After that, you can start torii:
 
 ```bash
 torii --config torii_config_dev.toml
 ```
 
-Вітаю сервер створений, запущений і готовий до роботи!
+Congratulations! The server is created, running, and ready to work!
 
-## Конфігурація клієнта
+## Client Configuration
 
-Після відкриття unity проекту, потрібно знайти стартому сцену `Assets/Scenes/StartScene.unity`.
-Треба знайти game object **EntryPoint** в іерархії, встановити **Dojo Config** який є scriptable object, в який треба внести данні вашого локального серверу:
+After opening the Unity project, you need to find the startup scene `Assets/Scenes/StartScene.unity`.
+Find the **EntryPoint** game object in the hierarchy, set the **Dojo Config** which is a scriptable object, where you need to enter your local server data:
 
 - `World address`
 - `Game contract address`
-- `PLayer profile actions contract address`
+- `Player profile actions contract address`
 
 :::note
-Ці адреси ви може отримати через команду `sozo inspect`
+You can get these addresses using the `sozo inspect` command
 :::
-Приклади інших конфігурацій ви можете знайти тут: `Assets/TerritoryWars/DojoConfig/`
+
+Examples of other configurations can be found here: `Assets/TerritoryWars/DojoConfig/`
 
 ![client_connection_config](./img/2_client_connection_config.png)
 
-Всі налаштування готові, можна запускати playmode.
+All settings are ready, you can start playmode.

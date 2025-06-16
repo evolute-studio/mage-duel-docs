@@ -2,51 +2,51 @@
 sidebar_position: 2
 ---
 
-# Запуск білда
+# Launching the Build
 
-Для запуску білда треба Next.js обгортка. Треба склонувати репозиторій з веб додатком: 
+To launch the build, you need the Next.js wrapper. You need to clone the repository with the web application:
 
 https://github.com/evolute-studio/mage-duel-webgl.
 
-## Перенесення білда
-Відкрийте папку з готовим білдом, який ви зробили в попередньому кроці, виберіть і скопіюйте три папки:
+## Moving the Build
+Open the folder with the ready build that you created in the previous step, select and copy three folders:
 
 - Build
 - StreamingAssets
 - TemplateData
 
-Відкрийте папку `mage-duel-webgl/public` у склонованому репозиторію і видаліть папки з такими самими назвами і вставте скопійовані файли сюди. 
+Open the `mage-duel-webgl/public` folder in the cloned repository and delete folders with the same names, then paste the copied files here.
 
-## Версія білда в проекті
+## Build Version in Project
 
-Відкрийте файл `mage-duel-webgl/components/UnityPlayer.tsx` і знайдіть у функції **UnityPlayer** `const version = "x.y.z"` і замініть на свою версію.
+Open the file `mage-duel-webgl/components/UnityPlayer.tsx` and find in the **UnityPlayer** function `const version = "x.y.z"` and replace it with your version.
 
-Також для коректної роботи треба змінити версію Service Worker. Його можна знайти за шляхом `mage-duel-webgl/public/sw.js`. На початку файлу знайдіть `const CACHE` і змініть версію кешу на свою.
+Also, for correct operation, you need to change the Service Worker version. It can be found at `mage-duel-webgl/public/sw.js`. At the beginning of the file, find `const CACHE` and change the cache version to yours.
 
-## Налаштування змінних середовища
+## Environment Variables Setup
 
-Відкрийте файл `mage-duel-webgl/.env.local` і встановіть данні вашого серверу:
+Open the file `mage-duel-webgl/.env.local` and set your server data:
 ```js title="mage-duel-webgl/.env.local"
 NEXT_PUBLIC_RPC="http://localhost:5050" // local or slot katana 
 NEXT_PUBLIC_TORII="http://localhost:8080" // local or slot torii
-NEXT_PUBLIC_SLOT_PROJECT="KATANA" // під час міграції ви можете подивить назву chain id
-NEXT_PUBLIC_GAME_ADDRESS="0x04202a9fbb17db7d04a92f3182cef8dd339a7aff995a9fd5fa04afd087cb69d6" // адрес контракту 
-NEXT_PUBLIC_PLAYER_PROFILE_ADDRESS="0x04a1dc47e42dd54e5fbf54d7fe016900ebcfde4df06910457f7b6e15112707f3" // адрес контракту 
-NEXT_PUBLIC_WORLD_ADDRESS="0x055a227da2ac221a6311ec2df35df5c6fc25b450696f6c68bb604c8c350d59b7" // адрес світу
-NEXT_PUBLIC_SLOT_DATA_VERSION=28 // при підвищенні, автоматично стирає данні клієнта в сховищі
+NEXT_PUBLIC_SLOT_PROJECT="KATANA" // during migration you can see the chain id name
+NEXT_PUBLIC_GAME_ADDRESS="0x04202a9fbb17db7d04a92f3182cef8dd339a7aff995a9fd5fa04afd087cb69d6" // contract address
+NEXT_PUBLIC_PLAYER_PROFILE_ADDRESS="0x04a1dc47e42dd54e5fbf54d7fe016900ebcfde4df06910457f7b6e15112707f3" // contract address
+NEXT_PUBLIC_WORLD_ADDRESS="0x055a227da2ac221a6311ec2df35df5c6fc25b450696f6c68bb604c8c350d59b7" // world address
+NEXT_PUBLIC_SLOT_DATA_VERSION=28 // when increased, automatically clears client data in storage
 ```
 
-## Запуск
+## Launch
 
-Для початку встановіть [pnpm](https://pnpm.io/installation). Далі треба встановити залежності командою:
+First, install [pnpm](https://pnpm.io/installation). Then you need to install dependencies with the command:
 ```bash
 pnpm install
 ```
-Після встановлення залежностей, додаток можна запустити командою:
+After installing dependencies, you can launch the application with the command:
 ```bash
 pnpm dev
 ```
-Далі перейдіть за локальним адресом, який вивевся в терміналі. (по дефолту https://localhost:3000)
+Then go to the local address that was output in the terminal. (by default https://localhost:3000)
 :::note
-https з'єднання потрібне для роботи [Cartridge Controller]("https://cartridge.gg/controller")
+https connection is required for [Cartridge Controller]("https://cartridge.gg/controller") to work
 :::

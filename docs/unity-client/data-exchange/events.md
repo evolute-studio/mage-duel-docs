@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Івенти
+# Events
 
-## Типи івентів
+## Event Types
 
 1. Dojo Event
 2. Converted Dojo Event
@@ -12,4 +12,4 @@ sidebar_position: 4
 
 ## Dojo Event
 
-Dojo івенти які надсилає сервер досить схожі на моделі, але на жаль вони не генеруються автоматично, тому треба їх написати вручну. Івенти знаходяться разом з моделями за шляхом `Assets/TerritoryWars/Models`.
+Dojo events sent by the server are quite similar to models, but unfortunately they are not generated automatically, so they need to be written manually. Events are located together with models at `Assets/TerritoryWars/Models`.
