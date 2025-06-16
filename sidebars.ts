@@ -33,6 +33,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Core mechanics",
+      items: [
+        "unity-client/core-mechanics/tile-placing",
+      ],
+    },
+    {
+      type: "category",
       label: "Обмін данних",
       items: [
         "unity-client/data-exchange/data-synchronization",
@@ -50,7 +57,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "unity-client/deployment/build-creation",
         "unity-client/deployment/build-launch",
-        "unity-client/deployment/deployment",
+        //"unity-client/deployment/deployment",
       ],
     },
     {
