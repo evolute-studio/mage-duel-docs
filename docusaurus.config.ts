@@ -78,7 +78,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "dojoServerSidebar",
           position: "left",
-          label: "Dojo Server",
+          label: "Dojo On-chain",
           to: "/docs/dojo-server/intro",
           className: "navbar__item--dojo-server",
         },
