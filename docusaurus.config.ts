@@ -59,6 +59,12 @@ const config: Config = {
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
+    algolia: {
+      appId: 'Z7I0RV6HIN',
+      apiKey: '5d7cf0a80a4b75e35cf458de56f2c137',
+      indexName: 'mageduel-evolute',
+      insights: true,
+    },
     navbar: {
       title: "Mage Duel",
       logo: {
