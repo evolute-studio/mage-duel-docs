@@ -69,7 +69,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Main Concepts",
-      items: ["dojo-server/main-concepts/matchmaking-system"],
+      items: [
+        "dojo-server/main-concepts/matchmaking-system",
+        "dojo-server/main-concepts/tile-structure-explanation",
+        "dojo-server/main-concepts/board-model-explanation"
+      ],
     },
     {
       type: "category",
