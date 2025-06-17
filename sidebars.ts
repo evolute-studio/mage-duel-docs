@@ -68,6 +68,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Main Concepts",
+      items: ["dojo-server/main-concepts/matchmaking-system"],
+    },
+    {
+      type: "category",
       label: "API Reference",
       items: [
         "dojo-server/api-reference/overview", 
