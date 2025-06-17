@@ -10,7 +10,7 @@ The snapshot system in Mage Duel enables **time travel** functionality - the abi
 
 Every board maintains a **linked list of moves** that forms the complete game history:
 
-```cairo
+```rust
 pub struct Move {
     pub id: felt252,
     pub prev_move_id: Option<felt252>,  // Points to previous move
@@ -55,7 +55,7 @@ The snapshot system works through a **reverse reconstruction** process:
 
 ### Implementation Deep Dive
 
-```cairo
+```rust
 pub fn create_board_from_snapshot(
     ref world: WorldStorage,
     old_board_id: felt252,
@@ -79,7 +79,7 @@ pub fn create_board_from_snapshot(
 
 The system walks backward through the move chain, undoing each move's effects:
 
-```cairo
+```rust
 let mut last_move_id = old_board.last_move_id;
 let mut top_tile = old_board.top_tile;
 let mut available_tiles_in_deck = old_board.available_tiles_in_deck.clone();
@@ -110,7 +110,7 @@ for _ in 0..number_of_reverted_moves {
 Each move type requires different reversal logic:
 
 #### Regular Tile Moves
-```cairo
+```rust
 // Restore deck state
 if top_tile.is_some() {
     available_tiles_in_deck.append(top_tile.unwrap());
@@ -119,7 +119,7 @@ top_tile = move.tile;  // Tile goes back to top of deck
 ```
 
 #### Joker Moves
-```cairo
+```rust
 // Restore joker count
 if move.is_joker {
     if move.player_side == player1_side {
@@ -134,7 +134,7 @@ if move.is_joker {
 
 After identifying all moves to reverse, the system rebuilds the board state:
 
-```cairo
+```rust
 let mut updated_state: Array<(u8, u8, u8)> = ArrayTrait::new();
 
 for i in 0..old_board.state.len() {
@@ -163,7 +163,7 @@ Simply reverting the board state isn't enough - we need to **recalculate all sco
 
 The system rebuilds scoring from scratch using `build_score_from_state`:
 
-```cairo
+```rust
 // Initialize empty scoring structures
 let mut road_nodes: NullableVec<UnionNode> = VecTrait::new();
 let mut city_nodes: NullableVec<UnionNode> = VecTrait::new();
@@ -185,7 +185,7 @@ build_score_from_state(
 
 #### Phase 1: Tile Processing and Initial Connections
 
-```cairo
+```rust
 for i in 0..64_u8 {
     let (tile, rotation, player_side) = *board.state.at(i.into());
     
@@ -203,7 +203,7 @@ for i in 0..64_u8 {
 
 #### Phase 2: Cross-Tile Connections via BFS
 
-```cairo
+```rust
 let mut visited: Felt252Dict<bool> = Default::default();
 
 for i in 0..64_u8 {
@@ -217,7 +217,7 @@ for i in 0..64_u8 {
 
 The BFS algorithm ensures all tile interconnections are properly established:
 
-```cairo
+```rust
 fn bfs(/* ... */, start_index: u8) {
     let mut queue: Array<u8> = ArrayTrait::new();
     queue.append(start_index);
@@ -259,7 +259,7 @@ Snapshots can be created through various mechanisms:
 
 Each snapshot creates a completely new board with its own ID:
 
-```cairo
+```rust
 let board_id = board_id_generator.read();
 board_id_generator.write(board_id + 1);  // Increment for next board
 ```
@@ -273,7 +273,7 @@ This ensures:
 
 The snapshot system integrates with the event system for monitoring:
 
-```cairo
+```rust
 world.emit_event(
     @BoardCreatedFromSnapshot {
         board_id: new_board_id,
@@ -327,7 +327,7 @@ The system minimizes storage overhead by:
 
 ### Validation Checks
 
-```cairo
+```rust
 if last_move_id.is_none() {
     world.emit_event(@BoardCreateFromSnapshotFailed {
         player: player1, 
