@@ -13,7 +13,7 @@ Mage Duel uses a simple host-guest matchmaking system where one player creates a
 ### 1. Game Creation Phase
 
 #### Regular Game Creation
-```cairo
+```rust
 fn create_game(ref self: ContractState)
 ```
 
@@ -33,7 +33,7 @@ fn create_game(ref self: ContractState)
 - No board exists yet
 
 #### Snapshot Game Creation
-```cairo
+```rust
 fn create_game_from_snapshot(ref self: ContractState, snapshot_id: felt252)
 ```
 
@@ -53,7 +53,7 @@ fn create_game_from_snapshot(ref self: ContractState, snapshot_id: felt252)
 
 ### 2. Game Joining Phase
 
-```cairo
+```rust
 fn join_game(ref self: ContractState, host_player: ContractAddress)
 ```
 
@@ -91,7 +91,7 @@ fn join_game(ref self: ContractState, host_player: ContractAddress)
 
 ### 3. Game States
 
-```cairo
+```rust
 enum GameStatus {
     Created,             // Game created, waiting for opponent
     InProgress,          // Game active with both players
@@ -126,7 +126,7 @@ InProgress → Canceled (either player cancels during game)
 - Guest cannot have `Created` or `InProgress` status
 
 ### Game Cancellation
-```cairo
+```rust
 fn cancel_game(ref self: ContractState)
 ```
 

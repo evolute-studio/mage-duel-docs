@@ -12,7 +12,7 @@ The Player model represents user profiles in the game system, tracking identity,
 
 ### Structure Definition
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Player {
@@ -75,7 +75,7 @@ pub struct Player {
 
 ### Trait Definition
 
-```cairo
+```rust
 #[generate_trait]
 pub impl PlayerImpl of PlayerTrait {
     fn is_bot(self: @Player) -> bool {
@@ -103,7 +103,7 @@ pub impl PlayerImpl of PlayerTrait {
 - Implementing bot-specific behaviors
 
 **Example**:
-```cairo
+```rust
 let player: Player = world.read_model(player_address);
 if player.is_bot() {
     // Handle AI player logic
@@ -125,7 +125,7 @@ if player.is_bot() {
 - Enabling social features like friend systems
 
 **Example**:
-```cairo
+```rust
 let player: Player = world.read_model(player_address);
 if player.is_controller() {
     // Grant full access
@@ -148,7 +148,7 @@ if player.is_controller() {
 - Restricting certain game modes
 
 **Example**:
-```cairo
+```rust
 let player: Player = world.read_model(player_address);
 if player.is_guest() {
     // Apply guest limitations
@@ -195,7 +195,7 @@ if player.is_guest() {
 
 ### Creating a New Player
 
-```cairo
+```rust
 let new_player = Player {
     player_id: caller_address,
     username: chosen_name,
@@ -209,7 +209,7 @@ world.write_model(@new_player);
 
 ### Updating Player Statistics
 
-```cairo
+```rust
 // After game completion
 let mut player: Player = world.read_model(player_address);
 player.games_played += 1;
@@ -223,7 +223,7 @@ world.write_model(@player);
 
 ### Role-Based Feature Access
 
-```cairo
+```rust
 fn can_access_feature(player: @Player, feature: Feature) -> bool {
     match feature {
         Feature::BasicPlay => true, // All roles can play
@@ -236,7 +236,7 @@ fn can_access_feature(player: @Player, feature: Feature) -> bool {
 
 ### Player Profile Queries
 
-```cairo
+```rust
 // Get player profile
 let player: Player = world.read_model(player_address);
 
@@ -260,7 +260,7 @@ for address in player_addresses {
 
 ### Game System Integration
 
-```cairo
+```rust
 // Before starting a game
 let player1: Player = world.read_model(player1_address);
 let player2: Player = world.read_model(player2_address);
@@ -278,7 +278,7 @@ if player1.is_bot() || player2.is_bot() {
 
 ### Balance Management
 
-```cairo
+```rust
 // Deduct game entry fee
 fn charge_entry_fee(player_address: ContractAddress, fee: u32) -> bool {
     let mut player: Player = world.read_model(player_address);
@@ -302,7 +302,7 @@ fn award_points(player_address: ContractAddress, points: u32) {
 
 ### Skin System Integration
 
-```cairo
+```rust
 // Equip new skin
 fn equip_skin(player_address: ContractAddress, skin_id: u8) -> bool {
     let mut player: Player = world.read_model(player_address);
@@ -324,7 +324,7 @@ fn equip_skin(player_address: ContractAddress, skin_id: u8) -> bool {
 
 ### Username Validation
 
-```cairo
+```rust
 fn is_valid_username(username: felt252) -> bool {
     // Check if username meets requirements
     // - Not empty
@@ -337,7 +337,7 @@ fn is_valid_username(username: felt252) -> bool {
 
 ### Role Validation
 
-```cairo
+```rust
 fn is_valid_role(role: u8) -> bool {
     role <= 2 // Only 0, 1, 2 are valid
 }

@@ -12,7 +12,7 @@ In Mage Duel, tiles are the fundamental building blocks of gameplay. Each tile c
 
 Each edge of a tile can be one of four types:
 
-```cairo
+```rust
 #[derive(Serde, Drop, IntrospectPacked, PartialEq, Debug, Destruct, Copy)]
 pub enum TEdge {
     C,  // City - urban structures
@@ -51,7 +51,7 @@ There is visualisation of tile RCFF:
 
 ### Example Tile Encodings
 
-```cairo
+```rust
 Tile::CCCC  // All city edges
 Tile::FFFF  // All field edges  
 Tile::CCRR  // Cities on top/right, roads on bottom/left
@@ -63,7 +63,7 @@ Tile::Empty // Mountain edges (empty tile)
 
 ## Complete Tile Types
 
-```cairo
+```rust
 #[derive(Serde, Copy, Drop, IntrospectPacked, PartialEq, Debug)]
 pub enum Tile {
     CCCC,  // All cities
@@ -100,7 +100,7 @@ pub enum Tile {
 
 Tiles are converted to `u8` values for efficient storage:
 
-```cairo
+```rust
 impl TileToU8 of Into<Tile, u8> {
     fn into(self: Tile) -> u8 {
         match self {
@@ -136,7 +136,7 @@ Rotations are encoded as `u8` values from 0 to 3:
 
 ### Rotation Mechanics
 
-```cairo
+```rust
 pub fn create_extended_tile(tile: Tile, rotation: u8) -> ExtendedTile {
     let mut edges = [/* tile's base edges */].span();
     let rotation = (rotation % 4);
@@ -198,7 +198,7 @@ Edges: [C, F, F, R] (Top, Right, Bottom, Left)
 
 ### Position Encoding
 Board uses 8×8 grid with position calculated as:
-```cairo
+```rust
 position = col * 8 + row
 ```
 
@@ -207,7 +207,7 @@ position = col * 8 + row
 ### Board State Storage
 Each position stores tuple: `(tile_type, rotation, player_side)`
 
-```cairo
+```rust
 // Example board state entry
 state[25] = (5, 2, 1)  // Position 25(3rd column, 1st row in 0-indexed notation): Tile type 5 (CCRR), rotated 180°, placed by Red
 ```
@@ -223,7 +223,7 @@ state[25] = (5, 2, 1)  // Position 25(3rd column, 1st row in 0-indexed notation)
 ### Purpose
 ExtendedTile provides runtime edge information for a rotated tile:
 
-```cairo
+```rust
 #[derive(Drop, Serde, Debug)]
 struct ExtendedTile {
     pub edges: Span<TEdge>,  // [Top, Right, Bottom, Left] after rotation
@@ -232,7 +232,7 @@ struct ExtendedTile {
 
 ### Usage Example
 
-```cairo
+```rust
 // Get edges for CCRR tile rotated 90°
 let extended_tile = create_extended_tile(Tile::CCRR, 1);
 let edges = extended_tile.edges;
@@ -247,7 +247,7 @@ let edges = extended_tile.edges;
 
 ### Tile Placement Validation
 
-```cairo
+```rust
 fn can_place_tile(tile: Tile, rotation: u8, col: u8, row: u8, board: @Board) -> bool {
     let extended_tile = create_extended_tile(tile, rotation);
     let edges = extended_tile.edges;
@@ -261,7 +261,7 @@ fn can_place_tile(tile: Tile, rotation: u8, col: u8, row: u8, board: @Board) -> 
 
 ### Scoring Calculations
 
-```cairo
+```rust
 fn calculate_tile_score(tile: Tile, rotation: u8, position: u8) -> (u16, u16) {
     let extended_tile = create_extended_tile(tile, rotation);
     let edges = extended_tile.edges;
@@ -284,7 +284,7 @@ fn calculate_tile_score(tile: Tile, rotation: u8, position: u8) -> (u16, u16) {
 
 ### Connection Detection
 
-```cairo
+```rust
 fn tiles_can_connect(tile1: ExtendedTile, edge1: u8, tile2: ExtendedTile, edge2: u8) -> bool {
     let edge1_type = *tile1.edges.at(edge1.into());
     let edge2_type = *tile2.edges.at(edge2.into());

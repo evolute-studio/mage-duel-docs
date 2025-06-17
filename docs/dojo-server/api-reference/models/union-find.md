@@ -18,7 +18,7 @@ This model is crucial for the game's scoring system as it tracks:
 
 ### Structure Definition
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct UnionFind {
@@ -126,7 +126,7 @@ The model maintains parallel arrays where each index represents a node (tile pos
 - Contest arrays start empty
 
 **Usage Example**:
-```cairo
+```rust
 let union_find = UnionFindImpl::new(board_id);
 // Now ready to track tile placement and scoring
 ```
@@ -145,7 +145,7 @@ let union_find = UnionFindImpl::new(board_id);
 - All arrays are empty, ready for fresh initialization
 
 **Usage Example**:
-```cairo
+```rust
 // Clear existing union-find data
 UnionFindImpl::write_empty(board_id, world);
 ```
@@ -169,7 +169,7 @@ UnionFindImpl::write_empty(board_id, world);
 - Uses model member selectors for precise field updates
 
 **Usage Example**:
-```cairo
+```rust
 let mut union_find = world.read_model(board_id);
 // Modify union_find data...
 union_find.write(world); // Efficiently persist changes
@@ -200,7 +200,7 @@ union_find.write(world); // Efficiently persist changes
    - Else: initialize as empty node (type 2)
 
 **Usage Example**:
-```cairo
+```rust
 let union_find = UnionFindImpl::from_union_nodes(
     road_nodes_arr,
     city_nodes_arr, 

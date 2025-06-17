@@ -5,7 +5,7 @@
 
 The core model representing the game board state, including tile placement, player information, scores, and game progression.
 
-```cairo
+```rust
 #[derive(Drop, Serde, Debug, Introspect, Clone)]
 #[dojo::model]
 pub struct Board {
@@ -56,7 +56,7 @@ pub struct Board {
 - `phase_started_at`: Timestamp when current phase began
 
 **Usage Example:**
-```cairo
+```rust
 // Read board state
 let board: Board = world.read_model(board_id);
 
@@ -79,7 +79,7 @@ match board.top_tile {
 
 Represents individual player moves with full event sourcing capability for game state reconstruction.
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Move {
@@ -126,7 +126,7 @@ pub struct Move {
 - **Skip Move**: `tile` is `None` (when no legal placement exists)
 
 **Usage Example:**
-```cairo
+```rust
 // Read a specific move
 let move: Move = world.read_model(move_id);
 
@@ -163,7 +163,7 @@ loop {
 
 Defines the game configuration, including deck composition, board setup, and special mechanics.
 
-```cairo
+```rust
 #[derive(Drop, Introspect, Serde)]
 #[dojo::model]
 pub struct Rules {
@@ -192,7 +192,7 @@ pub struct Rules {
 - `joker_price`: Cost in points to use a joker tile
 
 **Usage Example:**
-```cairo
+```rust
 // Read game rules
 let rules: Rules = world.read_model(rules_id);
 
@@ -212,7 +212,7 @@ if rules.joker_number > 0 {
 
 Tracks individual player game sessions and their status.
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Game {
@@ -236,7 +236,7 @@ pub struct Game {
 - `None` for games created from scratch
 
 **Usage Example:**
-```cairo
+```rust
 // Check player's current game
 let game: Game = world.read_model(player_address);
 
@@ -268,7 +268,7 @@ match game.snapshot_id {
 
 Stores game state snapshots for creating new games from specific points in game history.
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Snapshot {
@@ -294,7 +294,7 @@ pub struct Snapshot {
 - Supports replay and analysis of specific game moments
 
 **Usage Example:**
-```cairo
+```rust
 // Read snapshot information
 let snapshot: Snapshot = world.read_model(snapshot_id);
 
@@ -313,7 +313,7 @@ if snapshot.player == authorized_creator {
 
 ### PlayerSide Enum
 
-```cairo
+```rust
 #[derive(Drop, Serde, Copy, IntrospectPacked, PartialEq, Debug)]
 pub enum PlayerSide {
     Blue,
@@ -328,7 +328,7 @@ Represents which side a player is on. Used throughout the game for:
 
 ### GameState Enum
 
-```cairo
+```rust
 #[derive(Copy, Drop, Serde, Debug, IntrospectPacked, PartialEq)]
 pub enum GameState {
     InProgress,
@@ -342,7 +342,7 @@ Tracks the current state of a game:
 
 ### GameStatus Enum
 
-```cairo
+```rust
 #[derive(Drop, Serde, Copy, IntrospectPacked, PartialEq, Debug)]
 pub enum GameStatus {
     Finished,
@@ -380,7 +380,7 @@ Tracks player's individual game status:
 ## Common Query Patterns
 
 ### Get Active Game for Player
-```cairo
+```rust
 let game: Game = world.read_model(player_address);
 if game.status == GameStatus::InProgress {
     let board_id = game.board_id.unwrap();
@@ -389,7 +389,7 @@ if game.status == GameStatus::InProgress {
 ```
 
 ### Reconstruct Game History
-```cairo
+```rust
 let board: Board = world.read_model(board_id);
 let mut moves = ArrayTrait::new();
 
@@ -407,7 +407,7 @@ loop {
 ```
 
 ### Check Player's Turn
-```cairo
+```rust
 let board: Board = world.read_model(board_id);
 let last_move: Move = world.read_model(board.last_move_id.unwrap());
 

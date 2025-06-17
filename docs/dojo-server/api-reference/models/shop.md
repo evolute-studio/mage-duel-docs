@@ -12,7 +12,7 @@ The Shop model represents the in-game marketplace where players can purchase ski
 
 ### Structure Definition
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Shop {
@@ -42,7 +42,7 @@ pub struct Shop {
 
 ### Reading Shop Data
 
-```cairo
+```rust
 // Get shop information
 let shop: Shop = world.read_model(shop_id);
 
@@ -58,7 +58,7 @@ fn get_skin_price(skin_id: u8, shop: @Shop) -> Option<u32> {
 
 ### Purchase Validation
 
-```cairo
+```rust
 // Check if player can afford a skin
 fn can_afford_skin(player: @Player, skin_id: u8, shop: @Shop) -> bool {
     match get_skin_price(skin_id, shop) {
@@ -70,7 +70,7 @@ fn can_afford_skin(player: @Player, skin_id: u8, shop: @Shop) -> bool {
 
 ### Purchase Transaction
 
-```cairo
+```rust
 // Execute skin purchase
 fn purchase_skin(
     player_address: ContractAddress,
@@ -97,7 +97,7 @@ fn purchase_skin(
 
 ### Update Prices
 
-```cairo
+```rust
 // Update skin prices
 fn update_skin_prices(
     shop_id: felt252,
@@ -112,7 +112,7 @@ fn update_skin_prices(
 
 ### Add New Skin
 
-```cairo
+```rust
 // Add new skin to shop
 fn add_skin_to_shop(
     shop_id: felt252,

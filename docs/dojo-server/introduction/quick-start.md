@@ -259,7 +259,7 @@ Let's make a simple change to understand the development workflow.
 
 Open `src/models/player.cairo` and change data type for player balance:
 
-```cairo
+```rust
 #[derive(Drop, Serde, Introspect, Debug)]
 #[dojo::model]
 pub struct Player {

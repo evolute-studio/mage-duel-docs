@@ -10,7 +10,7 @@ The Board model is the heart of Mage Duel's game state. It represents a complete
 
 ## Board Structure Deep Dive
 
-```cairo
+```rust
 #[derive(Drop, Serde, Debug, Introspect, Clone)]
 #[dojo::model]
 pub struct Board {
@@ -45,7 +45,7 @@ pub struct Board {
 - Generated incrementally by board_id_generator
 
 **Example Usage:**
-```cairo
+```rust
 let board: Board = world.read_model(board_id);
 ```
 
@@ -75,7 +75,7 @@ Side 3 (Left):   [positions 24-31]
 - Enables tile placement validation
 
 **Example:**
-```cairo
+```rust
 // Edge state for a board with 1 city and 1 road per side
 initial_edge_state = [
     0, 2, 2, 1, 2, 2, 2, 2,   // Bottom: city at pos 0, road at pos 3
@@ -98,7 +98,7 @@ initial_edge_state = [
 ![](./img/tile_positions_on_board.png)
 
 **Example State:**
-```cairo
+```rust
 state = [
     (24, 0, 0),     // Position 0: Empty
     (5, 2, 1),      // Position 1: Tile type 5, rotated 180°, placed by Red
@@ -115,7 +115,7 @@ state = [
 **What it is:** All tiles that can still be drawn from the deck.
 
 **Content:** Flattened array where each element represents one drawable tile
-```cairo
+```rust
 // If rules specify: [2 of tile_0, 1 of tile_1, 3 of tile_2, ...]
 // Then available_tiles_in_deck = [0, 0, 1, 2, 2, 2, ...]
 ```
@@ -159,7 +159,7 @@ state = [
 - Cannot make joker moves when count = 0
 
 **Example:**
-```cairo
+```rust
 player1 = (0x123..., PlayerSide::Blue, 2),    // 2 jokers remaining
 player2 = (0x456..., PlayerSide::Red, 3),     // 3 jokers remaining
 ```
@@ -184,7 +184,7 @@ player2 = (0x456..., PlayerSide::Red, 3),     // 3 jokers remaining
 - Final joker bonus at game end
 
 **Example Progression:**
-```cairo
+```rust
 // After player places city tile
 blue_score = (8, 3),  // 8 city points, 3 road points
 red_score = (5, 7),   // 5 city points, 7 road points
@@ -237,7 +237,7 @@ red_score = (2, 7),   // -3, lost the contest
 - Turn validation (whose turn is it?)
 
 **Timing Rules:**
-```cairo
+```rust
 const MOVE_TIME: u64 = 65; // 65 seconds per move
 
 // If time_delta > MOVE_TIME: opponent's turn
@@ -250,7 +250,7 @@ const MOVE_TIME: u64 = 65; // 65 seconds per move
 
 ### Reading Board State
 
-```cairo
+```rust
 // Get complete board
 let board: Board = world.read_model(board_id);
 
@@ -268,7 +268,7 @@ let red_total = red_cities + red_roads;
 
 ### Checking Tile Placement
 
-```cairo
+```rust
 // Check what's at a specific position
 let position = 25; // col=3, row=1 (3*8+1=25)
 let (tile_type, rotation, player_side) = *board.state.at(position.into());
@@ -282,7 +282,7 @@ if tile_type == Tile::Empty.into() {
 
 ### Turn Management
 
-```cairo
+```rust
 // Determine whose turn it is
 if let Option::Some(last_move_id) = board.last_move_id {
     let last_move: Move = world.read_model(last_move_id);
@@ -301,7 +301,7 @@ if let Option::Some(last_move_id) = board.last_move_id {
 
 ### Deck Operations
 
-```cairo
+```rust
 // Check if tiles are available
 if board.available_tiles_in_deck.len() > 0 {
     // Can draw more tiles
@@ -321,7 +321,7 @@ if board.available_tiles_in_deck.len() > 0 {
 
 ### Game End Detection
 
-```cairo
+```rust
 // Check various end conditions
 let deck_empty = board.available_tiles_in_deck.len() == 0 && board.top_tile.is_none();
 let no_jokers = {
@@ -346,7 +346,7 @@ if time_since_update > 2 * MOVE_TIME {
 ## Board Lifecycle
 
 ### 1. Creation
-```cairo
+```rust
 // New board created with:
 - Empty 8×8 grid (all Tile::Empty)
 - Random initial edge configuration
@@ -357,7 +357,7 @@ if time_since_update > 2 * MOVE_TIME {
 ```
 
 ### 2. Active Play
-```cairo
+```rust
 // During game:
 - Tiles placed, state array updated
 - Scores increase with tile placement
@@ -367,7 +367,7 @@ if time_since_update > 2 * MOVE_TIME {
 ```
 
 ### 3. Game End
-```cairo
+```rust
 // When finished:
 - Final scoring calculations
 - Joker bonuses added
