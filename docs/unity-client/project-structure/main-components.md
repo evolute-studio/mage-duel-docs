@@ -2,28 +2,117 @@
 sidebar_position: 3
 ---
 
-# General Information
+# Project Structure and Components
 
-## Project Structure
+## Directory Structure
 
-- `Assets/Prefabs` - prefabs
-- `Assets/Plugins/WebGL/Wrapper.jslib` - main jslib file that serves as a bridge between Unity Client and Next.js wrapper web app
-- `Assets/Resources` - some configuration scriptable objects for characters, tile sprites
-- `Assets/Scenes` - scenes, the main ones are StartScene, Menu, Session
-- `Assets/Sprites` - sprites
-- `Assets/TerritoryWars` - main codebase is here
+The project follows a standard Unity project structure with specific directories for different types of assets:
 
-## Main Scripts
+| Directory | Purpose |
+|-----------|---------|
+| `Assets/Prefabs` | Contains all prefabricated game objects |
+| `Assets/Plugins/WebGL/Wrapper.jslib` | JavaScript bridge between Unity Client and Next.js wrapper |
+| `Assets/Resources` | Configuration scriptable objects for characters and tile sprites |
+| `Assets/Scenes` | Game scenes (StartScene, Menu, Session) |
+| `Assets/Sprites` | All game sprites and textures |
+| `Assets/TerritoryWars` | Main codebase location |
 
-- `EntryPoint` - manages initial client loading, account creation calls, data synchronization, state verification, etc.
-- `DojoGameManager` - Contains logic for creating player and bot accounts, synchronization logic, etc.
-- `GlobalContext` - Contains common structures, accessible as a singleton field of DojoGameManager. Contains SessionContext.
-- `SessionContext` - Contains session information, all board data structures, players, etc. Accessible both through GlobalContext and SessionManager
-- `SessionManager` - main script that manages the session, has a builder component. More details [here](../session/session-manager.md).
-- `BoardManager` - responsible for tile placement, their storage, etc.
-- `TileData` - main class for storing tile information.
-- `TileSelector` - script that manages the process of placing local player tiles. Selection of possible positions, their display, tile placement call.
-- `DojoLayer` - new script through which you can easily get dojo models and immediately convert them to client models.
-- `EventHandler` - handles tracking dojo events and updating dojo models. Filters and converts to client events
-- `GameUI` - main UI script in session
-- `GameConfiguration` - game configuration
+## Core Components
+
+### Initialization and Management
+
+#### EntryPoint
+- **Purpose**: Manages initial client setup
+- **Responsibilities**:
+  - Client loading
+  - Account creation
+  - State verification
+
+#### DojoGameManager
+- **Purpose**: Core game management
+- **Responsibilities**:
+  - Player account creation
+  - Bot account management
+  - Data synchronization
+
+### Context Management
+
+#### GlobalContext
+- **Access**: Through DojoGameManager singeltone
+- **Contains**:
+  - Common structures
+  - SessionContext reference
+
+#### SessionContext
+- **Purpose**: Session data management
+- **Access**: Through GlobalContext or SessionManager
+- **Contains**:
+  - Session information
+  - Board data structures
+  - Player data
+
+#### SessionManagerContext
+- **Purpose**: Session manager modules management
+- **Access**: Through SessionManager
+- **Contains**:
+  - GameLoopManager
+  - PlayersManager
+  - JokerManager, ContestManager, etc.
+
+### Game Logic
+
+#### SessionManager
+- **Purpose**: Session control
+- **Features**:
+  - Session lifecycle management
+  - Builder component integration
+- **Documentation**: [Detailed documentation](../session/session-manager.md)
+
+#### BoardManager
+- **Purpose**: Board management
+- **Responsibilities**:
+  - Tile placement
+  - Tile storage
+  - Board state management
+
+### Tile System
+
+#### TileData
+- **Purpose**: Tile information storage
+- **Type**: Main data class
+- **Usage**: Core tile data structure
+
+#### TileSelector
+- **Purpose**: Tile placement management
+- **Features**:
+  - Position selection
+  - Visual feedback
+  - Placement validation
+  - Tile placement execution
+
+### Data and Event Handling
+
+#### DojoLayer
+- **Purpose**: Model management
+- **Features**:
+  - Dojo model retrieval
+  - Client model conversion
+  - Data transformation
+
+#### EventHandler
+- **Purpose**: Event management
+- **Responsibilities**:
+  - Dojo event tracking
+  - Model updates
+  - Event filtering
+  - Client event conversion
+
+### User Interface
+
+#### GameUI
+- **Purpose**: Session UI management
+- **Scope**: Main UI controller for game sessions
+
+#### GameConfiguration
+- **Purpose**: Game settings management
+- **Type**: Configuration container
