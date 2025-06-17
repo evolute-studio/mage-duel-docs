@@ -28,6 +28,15 @@ public static string[] TileTypes =
 
 For each type, there is a prepared prefab at the path `Assets/Prefabs/TilePrefabs/FullTilePrefab`
 
+Here's how a tile looks, for example:
+
+![tile_logic](./img/tile_logic.png)
+
+Features:
+- The top edge of the tile is top-right
+- Tile rotation occurs clockwise
+- Changing the position and rotation of objects on the tile is done in several ways
+
 The class that stores and operates the tile is **TileData** 
 
 ```csharp title="Assets/TerritoryWars/Tile/TileData.cs"
@@ -42,6 +51,13 @@ public class TileData
     // other code
 }
 ```
+
+Additional scripts that operate tiles:
+
+- **TileGenerator** is responsible for tile generation
+- **TileRotator** is responsible for rotating objects on the tile
+- **TileParts** stores and operates all graphical objects of the tile
+
 
 ## Board
 
@@ -63,4 +79,3 @@ public class BoardManager : MonoBehaviour
 }
 ```
 Where **x** is the axis that starts from the **bottom** and is directed **up-right**, **y** is the axis that starts from the **bottom** and is directed **up-left**.
-
