@@ -6,26 +6,26 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #b5825d;
+  --ifm-color-primary-dark: #a67654;
+  --ifm-color-primary-darker: #9d7050;
+  --ifm-color-primary-darkest: #825d42;
+  --ifm-color-primary-light: #c48e66;
+  --ifm-color-primary-lighter: #cd946a;
+  --ifm-color-primary-lightest: #dfa676;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #d4a574;
+  --ifm-color-primary-dark: #ce9a66;
+  --ifm-color-primary-darker: #cb9560;
+  --ifm-color-primary-darkest: #bf8548;
+  --ifm-color-primary-light: #dab082;
+  --ifm-color-primary-lighter: #ddb588;
+  --ifm-color-primary-lightest: #e6c59e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -34,7 +34,7 @@
 .header-x-link::before,
 .navbar__item--unity-client::before,
 .navbar__item--dojo-server::before {
-  content: '';
+  content: "";
   width: 24px;
   height: 24px;
   display: flex;
@@ -72,7 +72,7 @@
 
 .navbar__item--unity-client::before,
 .navbar__item--dojo-server::before {
-  content: '';
+  content: "";
   width: 24px;
   height: 24px;
   display: flex;
@@ -99,4 +99,58 @@
 .navbar__item--unity-client.navbar__link--active::before,
 .navbar__item--dojo-server.navbar__link--active::before {
   background-color: var(--ifm-navbar-link-active-color);
-} 
+}
+
+.king-container {
+  height: 350px;
+  overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  z-index: -1;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .king-container {
+    height: 220px;
+  }
+  
+  /* Hide text only in main navbar, not in sidebar */
+  .navbar__items .navbar__item--unity-client,
+  .navbar__items .navbar__item--dojo-server {
+    font-size: 0;
+    width: auto;
+    min-width: 24px;
+  }
+  
+  .navbar__items .navbar__item--unity-client::before,
+  .navbar__items .navbar__item--dojo-server::before {
+    margin-right: 0;
+  }
+  
+  .navbar__items .header-github-link,
+  .navbar__items .header-discord-link,
+  .navbar__items .header-x-link {
+    padding: 0;
+    margin: 0 8px;
+  }
+  
+  /* Add text labels for social icons in mobile sidebar */
+  .navbar-sidebar__items .header-github-link::after {
+    content: "GitHub";
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  
+  .navbar-sidebar__items .header-discord-link::after {
+    content: "Discord";
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  
+  .navbar-sidebar__items .header-x-link::after {
+    content: "X";
+    font-size: 16px;
+    margin-left: 8px;
+  }
+}
