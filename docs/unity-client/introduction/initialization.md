@@ -15,8 +15,8 @@ sidebar_position: 2
 
 ## Links
 
-- Unity client repository: https://github.com/evolute-studio/territory-wars-unity-client
-- Server repository: https://github.com/evolute-studio/territory-wars-dojo
+- Unity client repository: https://github.com/evolute-studio/mage-duel-client.git
+- Server repository: https://github.com/evolute-studio/mage-duel-onchain.git
 - Web application repository: https://github.com/evolute-studio/mage-duel-webgl
 - Dojo Engine documentation: https://dojoengine.org/
 
@@ -27,8 +27,8 @@ First, install Dojo by following these [instructions](https://dojoengine.org/ins
 Clone the server repository and navigate to it:
 
 ```bash
-git clone https://github.com/evolute-studio/territory-wars-dojo
-cd territory-wars-dojo
+git https://github.com/evolute-studio/mage-duel-onchain.git
+cd mage-duel-onchain
 ```
 
 Start katana:
