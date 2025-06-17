@@ -72,7 +72,8 @@ const sidebars: SidebarsConfig = {
         "dojo-server/main-concepts/matchmaking-system",
         "dojo-server/main-concepts/tile-structure-explanation",
         "dojo-server/main-concepts/board-model-explanation",
-        "dojo-server/main-concepts/move-model-explanation"
+        "dojo-server/main-concepts/move-model-explanation",
+        "dojo-server/main-concepts/scoring_documentation"
       ],
     },
     {
