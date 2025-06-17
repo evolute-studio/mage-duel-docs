@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "unity-client/project-structure/main-components",
         "unity-client/core-mechanics/tile-placing",
-        "unity-client/project-structure/menu", 
+        //"unity-client/project-structure/menu", 
         "unity-client/project-structure/session"],
     },
     {
@@ -41,7 +41,6 @@ const sidebars: SidebarsConfig = {
         "unity-client/data-exchange/models",
         "unity-client/data-exchange/events",
         "unity-client/data-exchange/server-functions-burner",
-        "unity-client/data-exchange/server-functions-controller",
         
       ],
     },

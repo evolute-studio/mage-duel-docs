@@ -6,6 +6,8 @@ sidebar_position: 1
 
 ## Common Errors and Solutions
 
+---
+
 ### Contract Not Found Error
 
 **Error**: `ContractNotFound`
@@ -23,6 +25,8 @@ sidebar_position: 1
    - Clear PlayerPrefs data
    - You can use the [PlayerPrefs Editor](https://assetstore.unity.com/packages/tools/utilities/playerprefs-editor-167903?srsltid=AfmBOorhJGJNGstB7nJ0NzSUsb_N45ICEEBPBY2wFsrQOH9qLLyGxYPP) plugin
 
+---
+
 ### Transaction Execution Error
 
 **Error**: `TransactionExecutionError`
@@ -34,6 +38,8 @@ sidebar_position: 1
 - Server logic issues
 
 **Solution**: Check Katana logs for detailed error information.
+
+---
 
 ### Invalid Transaction Nonce
 
@@ -47,6 +53,8 @@ When a Controller player creates a match with a bot:
 2. Transaction confirmation required in Controller window
 3. Bot attempts to connect before confirmation
 4. Nonce mismatch occurs
+
+---
 
 ## Cartridge Slot Specific Issues
 
