@@ -154,3 +154,85 @@
     margin-left: 8px;
   }
 }
+
+/* Algolia DocSearch dark theme styling */
+:root {
+  --docsearch-modal-background: #242526;
+}
+
+.DocSearch-Modal {
+  background: var(--docsearch-modal-background) !important;
+}
+
+.DocSearch-SearchBar {
+  background: var(--ifm-card-background-color) !important;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.DocSearch-Form {
+  background: var(--ifm-background-surface-color) !important;
+  border: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.DocSearch-Input {
+  background: transparent !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.DocSearch-Input::placeholder {
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+.DocSearch-Dropdown {
+  background: var(--ifm-background-color) !important;
+}
+
+.DocSearch-Dropdown-Container {
+  background: var(--ifm-background-color) !important;
+}
+
+.DocSearch-Hits {
+  background: var(--ifm-background-color) !important;
+}
+
+.DocSearch-Hit {
+  background: var(--ifm-background-color) !important;
+  border-bottom: 1px solid var(--ifm-color-emphasis-100) !important;
+}
+
+.DocSearch-Hit:hover,
+.DocSearch-Hit[aria-selected="true"] {
+  background: var(--ifm-color-emphasis-100) !important;
+}
+
+.DocSearch-Hit-source {
+  background: var(--ifm-background-color) !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.DocSearch-Hit-title {
+  color: var(--ifm-font-color-base) !important;
+}
+
+.DocSearch-Hit-path {
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+.DocSearch-Footer {
+  background: var(--ifm-card-background-color) !important;
+  border-top: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.DocSearch-Commands {
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+.DocSearch-Commands-Key {
+  background: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-font-color-base) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+}
+
+.DocSearch-Label {
+  color: var(--ifm-color-emphasis-600) !important;
+}
