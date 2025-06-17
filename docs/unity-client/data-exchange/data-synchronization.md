@@ -4,69 +4,115 @@ sidebar_position: 1
 
 # Data Synchronization
 
-## General Information
+## Overview
 
-Information on the server is stored in [models](models.md). To use them on the client, you need to generate C# scripts during server build, which is done like this:
+Data synchronization between the server and client is managed through a set of models and tools. This document describes the process of generating, managing, and accessing synchronized data.
 
+## Model Generation
+
+### Prerequisites
+- Server build with Unity bindings generation
+- Access to dojo project folder
+
+### Generation Process
+1. Run the following command in the dojo project:
 ```bash
 sozo build --unity
 ```
 
-The generated models and contracts will be located in the dojo project folder: `territory-wars-dojo/bindings/unity`.
-The received scripts need to be moved to the client at the following paths:
+### Generated Files Location
+Generated models and contracts will be available at:
+`mage-duel-onchain/bindings/unity`
 
+### Client Integration
+Move the generated scripts to the following client directories:
 - `Assets/TerritoryWars/Models`
-- `Assets/TerritoryWars/Contracts`.
+- `Assets/TerritoryWars/Contracts`
 
 :::note
-Custom events are not generated! These scripts are easiest to create by example.
+Custom events are not automatically generated. Create these scripts manually based on existing examples.
 :::
 
-The main synchronization happens through two scripts from the **Dojo Unity SDK**:
+## Core Components
 
-- `WorldManager` - stores models on the client and has logic for their local retrieval
-- `SynchronizationManager` - synchronizes models, events, has logic for retrieving models by query
+### Dojo Unity SDK
+The main synchronization is handled by two key components:
 
-## Getting a Model
+#### WorldManager
+- **Purpose**: Client-side model storage
+- **Functionality**: Local model retrieval
+- **Location**: Part of Dojo Unity SDK
 
-To get the required model, you need to use the static script `DojoLayer`, which has a set of methods for retrieving **dojo models** and converting them to **client models**.
+#### SynchronizationManager
+- **Purpose**: Model and event synchronization
+- **Functionality**: 
+  - Model synchronization
+  - Event handling
+  - Query-based model retrieval
+- **Location**: Part of Dojo Unity SDK
 
-You can learn more about models [here](models.md).
+## Model Access
 
-Use the ready-made methods or add additional ones based on the existing examples.
+### DojoLayer
+The `DojoLayer` static script provides methods for:
+- Retrieving dojo models
+- Converting to client models
 
-For example, how to get a client player model:
+For detailed information about models, see [Models Documentation](models.md).
+
+### Implementation Example
+Example of retrieving a client player model:
 
 ```csharp
 public async Task<PlayerProfile> GetPlayerProfile(string playerId)
 {
-    evolute_duel_Player player = WorldManager.EntityModel<evolute_duel_Player>("player_id", new FieldElement(playerId));
+    // Check if model exists locally
+    evolute_duel_Player player = WorldManager.EntityModel<evolute_duel_Player>(
+        "player_id", 
+        new FieldElement(playerId)
+    );
+
+    // Synchronize if not found
     if (player == null)
     {
         await SynchronizationMaster.SyncPlayer(new FieldElement(playerId));
-        player = WorldManager.EntityModel<evolute_duel_Player>("player_id", new FieldElement(playerId));
+        player = WorldManager.EntityModel<evolute_duel_Player>(
+            "player_id", 
+            new FieldElement(playerId)
+        );
     }
+
+    // Return default if still not found
     if (player == null)
     {
         return default;
     }
+
+    // Convert to client model
     PlayerProfile profile = new PlayerProfile().SetData(player);
     return profile;
 }
 ```
 
-First, it will check if the required model is already on the client through **WorldManager**, if not - synchronization is performed.
+## Adding New Models
 
-More details on how to get a model that is not in the project:
+To add support for a new model, follow these steps:
 
-- First, you need to create the corresponding **Query** in the **DojoQueries** class.
-- Then in the **CustomSynchronizationManager** script, add a method following the example.
-- It's advisable to create a corresponding **client model**, as some field types or data representations from the server are not convenient to use directly on the client. Client models are located in the folder: `Assets/TerritoryWars/DataModels`
-- You need to create a corresponding conversion method in **DojoLayer**.
-- Call the method `await DojoLayer.NewMethod()`.
+1. **Create Query**
+   - Add corresponding query in `DojoQueries` class
 
-Done!
+2. **Add Synchronization Method**
+   - Implement method in `CustomSynchronizationManager`
+   - Follow existing examples
+
+3. **Create Client Model**
+   - Location: `Assets/TerritoryWars/DataModels`
+   - Purpose: Convert server data to client-friendly format
+
+4. **Add Conversion Method**
+   - Implement in `DojoLayer`
+   - Create method following pattern: `await DojoLayer.NewMethod()`
 
 :::warning
-If you don't see your model, it might be filtered by [IncomingModelsFilter](data-filtering.md)
+If a model is not visible, check [IncomingModelsFilter](data-filtering.md) for potential filtering rules.
 :::

@@ -2,20 +2,23 @@
 sidebar_position: 1
 ---
 
-# Game Components 
+# Game Components
 
-## Tile
+## Tile System
 
-The main essence of the game is players placing tiles, combining them into structures, and earning points for it.
-A tile has 4 sides, and each has a specific type:
+### Overview
+The tile system is the core gameplay mechanic where players place tiles to create structures and earn points. Each tile consists of four sides, each with a specific type:
+- Field (F)
+- City (C)
+- Road (R)
 
-- Field
-- City
-- Road
+### Tile Placement Rules
+- Tiles can only be placed adjacent to existing tiles
+- All connecting edges must match in type
+- Total possible tile combinations: 24
 
-A tile can only be placed in a position where there is at least one adjacent tile and all connecting edges are of the same type.
-
-Total number of combinations is **24**:
+### Tile Types
+The game includes the following tile combinations:
 
 ```csharp title="Assets/TerritoryWars/DataModels/GameConfiguration.cs"
 public static string[] TileTypes =
@@ -26,30 +29,60 @@ public static string[] TileTypes =
 };
 ```
 
-For each type, there is a prepared prefab at the path `Assets/Prefabs/TilePrefabs/FullTilePrefab`
+### Tile Structure
+Each tile type has a corresponding prefab located at:
+`Assets/Prefabs/TilePrefabs/FullTilePrefab`
 
-The class that stores and operates the tile is **TileData** 
+Visual representation:
+![tile_logic](./img/tile_logic.png)
+
+#### Key Features
+- **Orientation**: Top edge is positioned at top-right
+- **Rotation**: Occurs clockwise
+- **Object Manipulation**: Multiple methods available for position and rotation changes
+
+### Tile Data Structure
+The `TileData` class manages tile information:
 
 ```csharp title="Assets/TerritoryWars/Tile/TileData.cs"
 public class TileData
 {
     public string RotatedConfig; 
-    public string Type; // example: "CCRF"
-    public Vector2Int Position; // from [0, 0] to [9,9]
-    public int Rotation; // from 0 to 4
-    public int PlayerSide; // session player side
+    public string Type;          // Format: "CCRF"
+    public Vector2Int Position;  // Range: [0, 0] to [9, 9]
+    public int Rotation;         // Range: 0 to 4
+    public int PlayerSide;       // Session player side
     
     // other code
 }
 ```
 
-## Board
+### Supporting Components
 
-The default board has a total size of **10x10**, which is **8x8** active area where players can place tiles, plus a pre-generated outline with starting structures to which tiles are placed at the beginning of the game.
+#### TileGenerator
+- **Purpose**: Handles tile generation
+- **Location**: `Assets/TerritoryWars/Tile/TileGenerator.cs`
 
+#### TileRotator
+- **Purpose**: Manages tile rotation
+- **Location**: `Assets/TerritoryWars/Tile/TileRotator.cs`
+
+#### TileParts
+- **Purpose**: Manages tile graphical elements
+- **Location**: `Assets/TerritoryWars/Tools/TileParts.cs`
+
+## Board System
+
+### Board Structure
+- **Total Size**: 10x10
+- **Active Area**: 8x8 (playable area)
+- **Outline**: Pre-generated starting structures
+
+Visual representation:
 ![board_logic](./img/board_logic.png)
 
-Placed tiles are stored in **BoardManager**:
+### Board Management
+The `BoardManager` class handles tile storage and board state:
 
 ```csharp title="Assets/TerritoryWars/General/BoardManager.cs"
 public class BoardManager : MonoBehaviour
@@ -62,5 +95,11 @@ public class BoardManager : MonoBehaviour
     // other code
 }
 ```
-Where **x** is the axis that starts from the **bottom** and is directed **up-right**, **y** is the axis that starts from the **bottom** and is directed **up-left**.
 
+### Coordinate System
+- **X-axis**: 
+  - Origin: Bottom
+  - Direction: Up-right
+- **Y-axis**:
+  - Origin: Bottom
+  - Direction: Up-left
