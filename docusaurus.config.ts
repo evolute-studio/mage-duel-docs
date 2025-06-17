@@ -89,6 +89,10 @@ const config: Config = {
           className: "navbar__item--dojo-server",
         },
         {
+          type: "search",
+          position: "right",
+        },
+        {
           href: "https://github.com/evolute-studio",
           //label: "GitHub",
           position: "right",
