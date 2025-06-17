@@ -73,6 +73,13 @@ const sidebars: SidebarsConfig = {
         "dojo-server/api-reference/overview", 
         {
           type: 'category',
+          label: 'Libs',
+          items: [
+            "dojo-server/api-reference/libs/achievements", 
+          ],
+        },
+        {
+          type: 'category',
           label: 'Models',
           items: [
             "dojo-server/api-reference/models/game", 
