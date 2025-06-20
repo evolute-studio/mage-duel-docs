@@ -13,7 +13,6 @@ Open the folder with the ready build that you created in the previous step, sele
 
 - Build
 - StreamingAssets
-- TemplateData
 
 Open the `mage-duel-webgl/public` folder in the cloned repository and delete folders with the same names, then paste the copied files here.
 
