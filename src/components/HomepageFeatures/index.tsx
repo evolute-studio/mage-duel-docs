@@ -66,6 +66,7 @@ export default function HomepageFeatures(): ReactNode {
           ))}
         </div>
       </div>
+      
     </section>
   );
 }
