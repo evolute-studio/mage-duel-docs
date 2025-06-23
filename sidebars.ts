@@ -29,8 +29,9 @@ const sidebars: SidebarsConfig = {
       items: [
         "unity-client/project-structure/main-components",
         "unity-client/core-mechanics/tile-placing",
-        //"unity-client/project-structure/menu", 
-        "unity-client/project-structure/session"],
+        //"unity-client/project-structure/menu",
+        "unity-client/project-structure/session",
+      ],
     },
     {
       type: "category",
@@ -41,7 +42,6 @@ const sidebars: SidebarsConfig = {
         "unity-client/data-exchange/models",
         "unity-client/data-exchange/events",
         "unity-client/data-exchange/server-functions-burner",
-        
       ],
     },
     {
@@ -57,6 +57,11 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "FAQ",
       items: ["unity-client/faq/faq"],
+    },
+    {
+      type: "category",
+      label: "Features Implementation",
+      items: ["unity-client/features-implementation/spectator-mode"],
     },
   ],
   dojoServerSidebar: [
@@ -74,29 +79,27 @@ const sidebars: SidebarsConfig = {
         "dojo-server/main-concepts/board-model-explanation",
         "dojo-server/main-concepts/move-model-explanation",
         "dojo-server/main-concepts/scoring_documentation",
-        "dojo-server/main-concepts/snapshot_documentation"
+        "dojo-server/main-concepts/snapshot_documentation",
       ],
     },
     {
       type: "category",
       label: "API Reference",
       items: [
-        "dojo-server/api-reference/overview", 
+        "dojo-server/api-reference/overview",
         {
-          type: 'category',
-          label: 'Libs',
-          items: [
-            "dojo-server/api-reference/libs/achievements", 
-          ],
+          type: "category",
+          label: "Libs",
+          items: ["dojo-server/api-reference/libs/achievements"],
         },
         {
-          type: 'category',
-          label: 'Models',
+          type: "category",
+          label: "Models",
           items: [
-            "dojo-server/api-reference/models/game", 
-            "dojo-server/api-reference/models/player", 
+            "dojo-server/api-reference/models/game",
+            "dojo-server/api-reference/models/player",
             "dojo-server/api-reference/models/union-find",
-            "dojo-server/api-reference/models/shop"
+            "dojo-server/api-reference/models/shop",
           ],
         },
       ],
