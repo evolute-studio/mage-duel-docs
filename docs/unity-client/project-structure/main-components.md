@@ -66,7 +66,6 @@ The project follows a standard Unity project structure with specific directories
 - **Features**:
   - Session lifecycle management
   - Builder component integration
-- **Documentation**: [Detailed documentation](../session/session-manager.md)
 
 #### BoardManager
 - **Purpose**: Board management
