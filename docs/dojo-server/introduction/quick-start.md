@@ -303,19 +303,17 @@ Now that you have the basics working, here's what to explore next:
 - Understand how tile placement and scoring work
 - Study the victory conditions
 
-### 🔧 **Explore the Architecture**
-- [Core Architecture Guide](./core-architecture) - Deep dive into smart contract design
-- [Snapshot System](./snapshot-system) - Understanding game state management
-- [Commit-Reveal Mechanism](./commit-reveal) - How hidden information works
-
-### 💻 **Start Contributing**
-- [Development Workflows](./development-workflows) - Best practices for code changes
-- [Testing Guide](./testing-debugging) - How to test your modifications
-- [API Reference](./api-reference) - Complete contract interface documentation
-
 ### 🎮 **Try the Live Game**
 - Play online at [mageduel.evolute.network](https://mageduel.evolute.network/)
 - Compare your local changes with the production version
+
+### 🔧 **Explore the Architecture**
+- [Matchmaking System](../main-concepts/matchmaking-system) 
+- [Tile Structure](../main-concepts/tile-structure-explanation)
+- [Board](../main-concepts/board-model-explanation)
+- [Move Model and Event Sourcing](../main-concepts/move-model-explanation)
+- [Scoring System](../main-concepts/scoring_documentation)
+- [Snapshot](../main-concepts/snapshot_documentation)
 
 ---
 
